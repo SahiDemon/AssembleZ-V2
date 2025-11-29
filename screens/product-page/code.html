@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Detail Screen (Variant 2)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1392ec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101a22",
+              "surface-dark": "#141d26",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
+<div class="flex items-center gap-4 text-white">
+<span class="material-symbols-outlined text-primary text-3xl">memory</span>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">AssembleZ</h2>
+</div>
+<div class="hidden items-center gap-9 md:flex">
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">CPUs</a>
+<a class="text-primary hover:text-white text-sm font-bold leading-normal transition-colors" href="#">GPUs</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Motherboards</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">RAM</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Storage</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-primary/90 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+<button class="flex md:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-white/10 text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow">
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+<div class="flex flex-col gap-12">
+<section class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+<div class="flex flex-col gap-4">
+<div class="overflow-hidden rounded-xl border border-white/10 bg-surface-dark">
+<img alt="NVIDIA GeForce RTX 4070 Graphics Card - Main View" class="aspect-[4/3] w-full object-contain p-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="cursor-pointer overflow-hidden rounded-lg border-2 border-primary bg-surface-dark">
+<img alt="NVIDIA GeForce RTX 4070 Thumbnail 1" class="aspect-square w-full object-contain p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+</div>
+<div class="cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-surface-dark opacity-60 transition-opacity hover:opacity-100">
+<img alt="NVIDIA GeForce RTX 4070 Thumbnail 2" class="aspect-square w-full object-contain p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+</div>
+<div class="cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-surface-dark opacity-60 transition-opacity hover:opacity-100">
+<img alt="NVIDIA GeForce RTX 4070 Thumbnail 3" class="aspect-square w-full object-contain p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbd7eEOcFK7xY4XBnWWey8vCDw-Ii6ueEimQGC3gRN26ZlcAZNIWr9nlFJyWqWb8jlj6Ls-T2ffdXE0FspqpC1_0I4cOVK8BKs6VzUDJChhSdvL6348Km-rM9E0bTEYUkOTha3wrjWJFlXSXFOqZP1XsePS7cZlEWIib0R4eKHdNxwYcc1igqDJLXyLevsj6xiLUpPUCJjx9S6TwctH83HtqMLnLe-XxA6T52MNsU-pX_PoOksfjsy3-dGijk0jBCOaNcToK191Cw"/>
+</div>
+<div class="cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-surface-dark opacity-60 transition-opacity hover:opacity-100">
+<img alt="NVIDIA GeForce RTX 4070 Thumbnail 4" class="aspect-square w-full object-contain p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbd7eEOcFK7xY4XBnWWey8vCDw-Ii6ueEimQGC3gRN26ZlcAZNIWr9nlFJyWqWb8jlj6Ls-T2ffdXE0FspqpC1_0I4cOVK8BKs6VzUDJChhSdvL6348Km-rM9E0bTEYUkOTha3wrjWJFlXSXFOqZP1XsePS7cZlEWIib0R4eKHdNxwYcc1igqDJLXyLevsj6xiLUpPUCJjx9S6TwctH83HtqMLnLe-XxA6T52MNsU-pX_PoOksfjsy3-dGijk0jBCOaNcToK191Cw"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-md bg-white/10">
+<span class="material-symbols-outlined text-primary">stadia_controller</span>
+</div>
+<p class="text-sm font-medium uppercase tracking-wider text-primary">Graphics Card</p>
+</div>
+<div>
+<h1 class="text-4xl font-bold leading-tight tracking-tight text-white lg:text-5xl">NVIDIA GeForce RTX 4070</h1>
+<p class="mt-1 text-lg text-white/60">by ASUS</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-baseline gap-2">
+<span class="text-xs text-white/60">Lowest Price</span>
+<p class="text-3xl font-bold text-white">LKR 250,000</p>
+</div>
+<div class="flex items-center gap-1 text-red-500">
+<span class="material-symbols-outlined text-lg">arrow_drop_down</span>
+<span class="text-sm font-medium">1.2% this week</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-4 rounded-xl border border-white/10 bg-surface-dark p-6">
+<h3 class="text-lg font-bold text-white">Key Specifications</h3>
+<div class="grid grid-cols-2 gap-x-6 gap-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-1 text-primary">memory</span>
+<div>
+<p class="text-sm font-medium text-white">VRAM</p>
+<p class="text-sm text-white/60">12GB GDDR6X</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-1 text-primary">speed</span>
+<div>
+<p class="text-sm font-medium text-white">Boost Clock</p>
+<p class="text-sm text-white/60">2475 MHz</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-1 text-primary">developer_board</span>
+<div>
+<p class="text-sm font-medium text-white">Architecture</p>
+<p class="text-sm text-white/60">Ada Lovelace</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-1 text-primary">power</span>
+<div>
+<p class="text-sm font-medium text-white">TDP</p>
+<p class="text-sm text-white/60">200W</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-3 sm:flex-row">
+<button class="flex flex-1 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined mr-2">notifications</span>
+<span class="truncate">Track Price</span>
+</button>
+<button class="flex flex-1 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary/20 text-primary text-base font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary/30">
+<span class="material-symbols-outlined mr-2">bookmark</span>
+<span class="truncate">Add to List</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 rounded-xl border border-white/10 bg-surface-dark p-6 lg:p-8">
+<div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+<div>
+<h2 class="text-2xl font-bold text-white">Price History</h2>
+<p class="text-white/60">Last 90 days</p>
+</div>
+<div class="flex items-center gap-2 rounded-lg bg-background-dark p-1">
+<button class="rounded-md px-3 py-1 text-sm font-medium text-white/60 hover:bg-white/10">30D</button>
+<button class="rounded-md bg-primary/20 px-3 py-1 text-sm font-medium text-primary">90D</button>
+<button class="rounded-md px-3 py-1 text-sm font-medium text-white/60 hover:bg-white/10">1 Year</button>
+<button class="rounded-md px-3 py-1 text-sm font-medium text-white/60 hover:bg-white/10">All</button>
+</div>
+</div>
+<div class="h-64 lg:h-80">
+<img alt="Price history chart for the NVIDIA GeForce RTX 4070" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkCtj8cS7e-Tx0S_vVHzw7IlYz5dycgNNutkeR7wmD3yoN3M8_FfJNP7590M1fRtlhtCfBc_OQYYEVq5-H-TbcWX4qeX_QB_ROJYxjvjmaaVfHCNtPuJ9IQ-ggO6qEMukY1geu4_9pG8ea_bd31tPozR1clL8411sZFG3PRJMS3GG5UZqmdjBOR4ATIClWXd9o6uatS0mmOSW2TJdX49HD8VHDS1uhjzM7DduPgTrLZu7639KlNe0CZNiuhIjydD1ZnSjpFpJsFmw" style="mask-image: linear-gradient(to top, transparent, black 10%);"/>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<div>
+<h2 class="text-2xl font-bold text-white">Compare Prices</h2>
+<p class="text-white/60">Found at 4 stores in Sri Lanka</p>
+</div>
+<div class="flex flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-surface-dark">
+<div class="grid grid-cols-10 items-center gap-4 px-6 py-4">
+<div class="col-span-10 sm:col-span-4 md:col-span-5">
+<p class="text-sm font-bold uppercase tracking-wider text-white/60">Retailer</p>
+</div>
+<div class="hidden text-right text-sm font-bold uppercase tracking-wider text-white/60 sm:col-span-2 sm:block md:col-span-2">Stock</div>
+<div class="hidden text-right text-sm font-bold uppercase tracking-wider text-white/60 sm:col-span-2 sm:block md:col-span-2">Price</div>
+<div class="hidden sm:block sm:col-span-2 md:col-span-1"></div>
+</div>
+<div class="grid grid-cols-10 items-center gap-4 px-6 py-5 transition-colors hover:bg-white/5">
+<div class="col-span-10 flex items-center gap-4 sm:col-span-4 md:col-span-5">
+<img alt="Nanotek Logo" class="h-10 w-10 rounded-lg object-contain bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmjHXTM3Fw-aCnvrWsXGXuP-kSlOiOxqMwhOGDWaXRMX9SkFmR4m8HPxU4MGPPwYT9IAU-Uwjnhxyes46ObLiStvp5Qa_HGALR3Q6tb_ynHKJjnlHVDKEU-96nRhetnJ2kXquT_ScdNIjRP7eY6ggx2pmiBtCX6jBcnKYzHr2GXTU2jTcDHAtw4f4-T097LumZ3BBZJxv4tIWf4lR5HPNkfisMiorVyKJuILtUokToFVnsPJ244tdhdvFmbbcqu3yVuaOFY4WRDXU"/>
+<div>
+<p class="font-bold text-white">Nanotek</p>
+<p class="text-xs text-white/60">ASUS Dual OC Edition</p>
+</div>
+</div>
+<div class="col-span-5 text-right text-green-400 sm:col-span-2 md:col-span-2">In Stock</div>
+<div class="col-span-5 text-right font-bold text-white sm:col-span-2 md:col-span-2">LKR 250,000</div>
+<div class="col-span-10 sm:col-span-2 md:col-span-1 sm:text-right mt-3 sm:mt-0">
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors sm:w-auto">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-10 items-center gap-4 px-6 py-5 transition-colors hover:bg-white/5">
+<div class="col-span-10 flex items-center gap-4 sm:col-span-4 md:col-span-5">
+<img alt="Redline Logo" class="h-10 w-10 rounded-lg object-contain bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5DCTwFkfGBfkq5eRVCVZeehcj5_VVvYc24KaWx7iSD32L8s_enNV6L15P8n74crAUs5vW9jQjcrpXWusvHJWKZvKgq3f2bCkqXvLsnwwGmg5bqmEbpYiJf0GiQ8auFEGE8JfW9ZWcLelG04MBxLHIxBtf-qz2ueqpuvrxlbJcUw8HAWBp7IPos75HF0SkhBAcnBu7Iy3VZoR_99_Eqo_YO2CpT-bNlmUlY9mVhXWfqrFeVJqa5jBbNwa-9ooMbTF2k-muk6QlFoo"/>
+<div>
+<p class="font-bold text-white">Redline Technologies</p>
+<p class="text-xs text-white/60">MSI Ventus 2X OC</p>
+</div>
+</div>
+<div class="col-span-5 text-right text-green-400 sm:col-span-2 md:col-span-2">In Stock</div>
+<div class="col-span-5 text-right font-bold text-white sm:col-span-2 md:col-span-2">LKR 252,500</div>
+<div class="col-span-10 sm:col-span-2 md:col-span-1 sm:text-right mt-3 sm:mt-0">
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors sm:w-auto">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-10 items-center gap-4 px-6 py-5 transition-colors hover:bg-white/5">
+<div class="col-span-10 flex items-center gap-4 sm:col-span-4 md:col-span-5">
+<img alt="GameStreet Logo" class="h-10 w-10 rounded-lg object-contain bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJlQnxILdcpYjIkmhvHuLL_Q1iO0lYtcDFjDFD7pDiyqPLvkrv-moBOZa0Ysqf7YeQOeoK7X3AoVfBOMuQUyomFMG3wyHzbegYdV2Gm_J6b4A4ig2li6UhT4XPg8P9un1vxgslhIzKsdl8URnQQg30CpHoTt-b-vyz3f_RkM2AhF-9vIhoV2dMceWTQx4kmVClytStt6T6OazpTLzJ4PJpVgUlgUml8KKxoXk3jCBs8L4O-Uh51lJf0wQKlyc474hevbarUq5mXX0"/>
+<div>
+<p class="font-bold text-white">GameStreet</p>
+<p class="text-xs text-white/60">Gigabyte Gaming OC</p>
+</div>
+</div>
+<div class="col-span-5 text-right text-yellow-400 sm:col-span-2 md:col-span-2">Low Stock</div>
+<div class="col-span-5 text-right font-bold text-white sm:col-span-2 md:col-span-2">LKR 255,000</div>
+<div class="col-span-10 sm:col-span-2 md:col-span-1 sm:text-right mt-3 sm:mt-0">
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors sm:w-auto">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-10 items-center gap-4 px-6 py-5 transition-colors hover:bg-white/5">
+<div class="col-span-10 flex items-center gap-4 sm:col-span-4 md:col-span-5">
+<img alt="TechLanka Logo" class="h-10 w-10 rounded-lg object-contain bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl-GH7M2uOIq6LQ4zROo036mwjF4DP_7wmpjQnkTAGgWDTq8HhplDC1J31we-M28BD5MMTZolpFL82_2HC5i4DFe5KJdlpjHAtXVJOsLWjU21T7T_1UWnLMij1HqabifGllYFr8a0VdmtuiE8Y7ZdjZamzLhuiLxm8Qvjv_ZPDzZPxZpa8rqTDIa0d6Cy7_GQb6403Y6NluKw_F170opw2nSxh5VpKn_4giVNxmg91qyu4-cqsPeEhqX0dd1N6qX-5AHjzwjSEvkw"/>
+<div>
+<p class="font-bold text-white">TechLanka</p>
+<p class="text-xs text-white/60">Zotac Twin Edge</p>
+</div>
+</div>
+<div class="col-span-5 text-right text-red-500 sm:col-span-2 md:col-span-2">Out of Stock</div>
+<div class="col-span-5 text-right font-bold text-white/50 sm:col-span-2 md:col-span-2">LKR 258,000</div>
+<div class="col-span-10 sm:col-span-2 md:col-span-1 sm:text-right mt-3 sm:mt-0">
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white/50 text-sm font-bold leading-normal tracking-[0.015em] transition-colors sm:w-auto" disabled="">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="bg-background-dark border-t border-white/10 mt-12">
+<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 text-white">
+<span class="material-symbols-outlined text-primary text-3xl">memory</span>
+<h2 class="text-white text-xl font-bold leading-tight">AssembleZ</h2>
+</div>
+<p class="mt-4 text-sm text-white/60">Your guide to the best PC part deals in Sri Lanka.</p>
+</div>
+<div>
+<h3 class="font-bold text-white">Navigation</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="text-white/60 hover:text-white" href="#">Home</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">About Us</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Legal</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="text-white/60 hover:text-white" href="#">Privacy Policy</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Follow Us</h3>
+<div class="mt-4 flex space-x-4">
+<a class="text-white/60 hover:text-white" href="#">Icon1</a>
+<a class="text-white/60 hover:text-white" href="#">Icon2</a>
+</div>
+</div>
+</div>
+<div class="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
+                    © 2024 AssembleZ. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+
+</body></html>

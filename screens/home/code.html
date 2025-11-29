@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AssembleZ Homepage (Variant 3) - Enhanced</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1392ec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101a22",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
+<div class="flex items-center gap-4 text-white">
+<span class="material-symbols-outlined text-primary text-3xl">memory</span>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">AssembleZ</h2>
+</div>
+<div class="hidden items-center gap-9 md:flex">
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">CPUs</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">GPUs</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Motherboards</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">RAM</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Storage</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-primary/90 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+<button class="flex md:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-white/10 text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow">
+<section class="relative flex flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat px-4 py-20 text-center md:gap-8 md:py-28" data-alt="Abstract dark blue and purple geometric pattern" style="background-image: linear-gradient(rgba(16, 26, 34, 0.8) 0%, rgba(16, 26, 34, 1) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsovHmYxLpZ3rAuuj5ZnhM0TQExkSbn7a7JHsUbpYfbitBzcZQSvmYDi-7LWNBr3rth3u-ds0-bBjaM56394dzFXvgQmFiof878T_hLmTVEtsbkpanElol2jDHDu4bXZAH2jZwyebIlzhTDQVWW0Fc8M-dYbldgIribU6rziSAtA-HuU5tBKJ8gYc52QPiPcm_yxut2ij4oMilWLND3bgBNHaOGDSQpv7wV5CTydbNMookJ6v1Xt1HDS54b9EvRlZd1WX5rnNkb7A');">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl">AssembleZ</h1>
+<h2 class="text-white/80 text-base font-normal leading-normal md:text-lg">Build Smarter. Compare PC part prices across Sri Lanka.</h2>
+</div>
+<label class="flex flex-col min-w-40 h-14 w-full max-w-[640px] md:h-16">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-white/20 bg-white/5 backdrop-blur-sm">
+<div class="text-white/60 flex items-center justify-center pl-4 md:pl-5">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-0 bg-transparent h-full placeholder:text-white/60 px-3 text-sm font-normal leading-normal md:text-base" placeholder="Search for a CPU, GPU, Motherboard..." value=""/>
+<div class="flex items-center justify-center pr-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 md:h-12 md:px-5 bg-primary text-white hover:bg-primary/90 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Search</span>
+</button>
+</div>
+</div>
+</label>
+<div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/10 hover:bg-white/20 px-3 transition-colors">
+<span class="material-symbols-outlined text-primary text-base">memory</span>
+<p class="text-white text-sm font-medium leading-normal">CPU</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/10 hover:bg-white/20 px-3 transition-colors">
+<span class="material-symbols-outlined text-primary text-base">stadia_controller</span>
+<p class="text-white text-sm font-medium leading-normal">GPU</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/10 hover:bg-white/20 px-3 transition-colors">
+<span class="material-symbols-outlined text-primary text-base">memory</span>
+<p class="text-white text-sm font-medium leading-normal">RAM</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/10 hover:bg-white/20 px-3 transition-colors">
+<span class="material-symbols-outlined text-primary text-base">database</span>
+<p class="text-white text-sm font-medium leading-normal">SSD</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/10 hover:bg-white/20 px-3 transition-colors">
+<span class="material-symbols-outlined text-primary text-base">computer</span>
+<p class="text-white text-sm font-medium leading-normal">Cases</p>
+</div>
+</div>
+</section>
+<section class="border-y border-white/10 bg-background-dark">
+<div class="mx-auto grid max-w-7xl grid-cols-1 gap-px sm:grid-cols-3">
+<div class="flex items-center justify-center gap-4 p-6">
+<span class="material-symbols-outlined text-primary text-4xl">verified</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-normal">Verified Stores</p>
+<p class="text-white/60 text-sm">Only trusted retailers listed.</p>
+</div>
+</div>
+<div class="flex items-center justify-center gap-4 p-6 border-y border-white/10 sm:border-y-0 sm:border-x">
+<span class="material-symbols-outlined text-primary text-4xl">shield_lock</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-normal">Official Warranty</p>
+<p class="text-white/60 text-sm">Products with genuine warranties.</p>
+</div>
+</div>
+<div class="flex items-center justify-center gap-4 p-6">
+<span class="material-symbols-outlined text-primary text-4xl">update</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-normal">Prices Updated Hourly</p>
+<p class="text-white/60 text-sm">Stay ahead with the latest deals.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-8 lg:flex-row">
+<aside class="w-full lg:w-64 xl:w-72 flex-shrink-0">
+<div class="sticky top-28 flex flex-col gap-2 rounded-xl border border-white/10 bg-[#141d26] p-4">
+<h3 class="text-white text-lg font-bold">Filters</h3>
+<div class="flex flex-col gap-2">
+<p class="text-white/80 text-sm font-medium">Category</p>
+<select class="form-select w-full rounded-lg border-white/20 bg-white/5 text-sm text-white focus:border-primary focus:ring-primary">
+<option>GPUs</option>
+<option>CPUs</option>
+<option>Motherboards</option>
+<option>RAM</option>
+<option>Storage</option>
+<option>Cases</option>
+</select>
+</div>
+<div class="flex flex-col divide-y divide-white/10 border-t border-white/10">
+<details class="group py-3" open="">
+<summary class="flex cursor-pointer list-none items-center justify-between">
+<span class="text-white/80 text-sm font-medium">Brand</span>
+<span class="material-symbols-outlined text-white/60 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 flex flex-col gap-2">
+<label class="flex items-center gap-2"><input checked="" class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">NVIDIA</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">AMD</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">ASUS</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">Gigabyte</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">MSI</span></label>
+</div>
+</details>
+<details class="group py-3" open="">
+<summary class="flex cursor-pointer list-none items-center justify-between">
+<span class="text-white/80 text-sm font-medium">Price Range</span>
+<span class="material-symbols-outlined text-white/60 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 flex flex-col gap-2">
+<input class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-xs text-white/60"><span>LKR 50k</span><span>LKR 800k+</span></div>
+</div>
+</details>
+<details class="group py-3">
+<summary class="flex cursor-pointer list-none items-center justify-between">
+<span class="text-white/80 text-sm font-medium">GPU Generation</span>
+<span class="material-symbols-outlined text-white/60 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 flex flex-col gap-2">
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">RTX 40 Series</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">RTX 30 Series</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">RX 7000 Series</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">RX 6000 Series</span></label>
+</div>
+</details>
+<details class="group py-3">
+<summary class="flex cursor-pointer list-none items-center justify-between">
+<span class="text-white/80 text-sm font-medium">VRAM</span>
+<span class="material-symbols-outlined text-white/60 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 flex flex-col gap-2">
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">24 GB</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">16 GB</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">12 GB</span></label>
+<label class="flex items-center gap-2"><input class="form-checkbox rounded bg-white/10 border-white/20 text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/> <span class="text-sm">8 GB</span></label>
+</div>
+</details>
+<details class="group py-3">
+<summary class="flex cursor-pointer list-none items-center justify-between">
+<span class="text-white/80 text-sm font-medium">Sort By</span>
+<span class="material-symbols-outlined text-white/60 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 flex flex-col gap-2">
+<select class="form-select w-full rounded-lg border-white/20 bg-white/5 text-sm text-white focus:border-primary focus:ring-primary">
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Most Popular</option>
+</select>
+</div>
+</details>
+</div>
+</div>
+</aside>
+<div class="flex-1">
+<div class="grid grid-cols-1 gap-6 @container sm:grid-cols-2 @[960px]:grid-cols-3 @[1200px]:grid-cols-4">
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="NVIDIA GeForce RTX 4070 Graphics Card" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">NVIDIA GeForce RTX 4070</h4>
+<p class="text-sm text-white/60">12GB GDDR6X, DLSS 3</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 250,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">Nanotek</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-red-500">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+<span class="font-medium">LKR 3,000</span>
+</div>
+<svg class="h-6 w-20 text-red-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,18 10,12 20,16 30,10 40,14 50,8 60,12 70,18 80,14"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="AMD Radeon RX 7800 XT Graphics Card" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXH8irxO78RpsUQppRk7xIHHAVCqVoi9VIBpAaiArjHtFnnDdsQ8vhJihO0bh_xCHY69t7eotTtpmoaSko4k7i8_TKGF4D8Yrj3xuJx1KZ16az3Na4H0qYJqXaGseuJxc5qZcYEKyqwJO9OKEKvR3VTO8X6aTSbhgT1odOdgDdilvRlFVXigWATc9S-mF2X_H5LqW_Y4FcDjXxNBU_HFdIwG3kX383jmMF-b9ICp7a9nKXGjYhJ0I2pILQMPuXS3agR1FWlTzwrY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">AMD Radeon RX 7800 XT</h4>
+<p class="text-sm text-white/60">16GB GDDR6, RDNA 3</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 235,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">Redline</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-green-500">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span class="font-medium">LKR 1,880</span>
+</div>
+<svg class="h-6 w-20 text-green-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,10 10,16 20,12 30,18 40,14 50,20 60,16 70,10 80,14"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="NVIDIA GeForce RTX 4090 Graphics Card" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbd7eEOcFK7xY4XBnWWey8vCDw-Ii6ueEimQGC3gRN26ZlcAZNIWr9nlFJyWqWb8jlj6Ls-T2ffdXE0FspqpC1_0I4cOVK8BKs6VzUDJChhSdvL6348Km-rM9E0bTEYUkOTha3wrjWJFlXSXFOqZP1XsePS7cZlEWIib0R4eKHdNxwYcc1igqDJLXyLevsj6xiLUpPUCJjx9S6TwctH83HtqMLnLe-XxA6T52MNsU-pX_PoOksfjsy3-dGijk0jBCOaNcToK191Cw"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">NVIDIA GeForce RTX 4090</h4>
+<p class="text-sm text-white/60">24GB GDDR6X, Ultimate Perf</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 780,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">GameStreet</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-green-500">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span class="font-medium">LKR 16,380</span>
+</div>
+<svg class="h-6 w-20 text-green-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,18 10,12 20,16 30,10 40,14 50,8 60,12 70,6 80,4"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="NVIDIA GeForce RTX 4060 Ti" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">NVIDIA GeForce RTX 4060 Ti</h4>
+<p class="text-sm text-white/60">8GB GDDR6, DLSS 3</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 185,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">TechLanka</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-green-500">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span class="font-medium">LKR 925</span>
+</div>
+<svg class="h-6 w-20 text-green-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,15 10,12 20,14 30,10 40,12 50,8 60,10 70,6 80,8"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="AMD Radeon RX 7900 XTX" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXH8irxO78RpsUQppRk7xIHHAVCqVoi9VIBpAaiArjHtFnnDdsQ8vhJihO0bh_xCHY69t7eotTtpmoaSko4k7i8_TKGF4D8Yrj3xuJx1KZ16az3Na4H0qYJqXaGseuJxc5qZcYEKyqwJO9OKEKvR3VTO8X6aTSbhgT1odOdgDdilvRlFVXigWATc9S-mF2X_H5LqW_Y4FcDjXxNBU_HFdIwG3kX383jmMF-b9ICp7a9nKXGjYhJ0I2pILQMPuXS3agR1FWlTzwrY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">AMD Radeon RX 7900 XTX</h4>
+<p class="text-sm text-white/60">24GB GDDR6, RDNA 3</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 410,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">Unity Plaza</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-red-500">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+<span class="font-medium">LKR 3,690</span>
+</div>
+<svg class="h-6 w-20 text-red-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,8 10,12 20,9 30,15 40,12 50,18 60,15 70,20 80,18"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="NVIDIA GeForce RTX 3060" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYHP__c99cAk5ZT1SqsvL9X4DYgmJQsnfUbjJEi2O3b-58NtteS4O5BaRpTYb4xVcYQIn8iTP03NokVoE2IUtG9NZMGMvRFU8iKfqzsKrAtscqVNB1y57d3zgyP45tlsXeNo_jbc2BYvc-Ljgavxjr6PulNw0Tm3vrkVfzLvWBmN7qQSGXwX6qBdYnPkRSuo01A2CCMHRK4miSOFSQ9hdIa1Q0AjfY1g97EdBt1EzCCBUiLtHGWwiE0FqeWJphiJ46zqbs8slKgY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">NVIDIA GeForce RTX 3060</h4>
+<p class="text-sm text-white/60">12GB GDDR6, Ampere</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 130,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">Nanotek</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-green-500">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span class="font-medium">LKR 1,950</span>
+</div>
+<svg class="h-6 w-20 text-green-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,18 10,14 20,16 30,12 40,15 50,10 60,12 70,8 80,6"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="AMD Radeon RX 6700 XT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXH8irxO78RpsUQppRk7xIHHAVCqVoi9VIBpAaiArjHtFnnDdsQ8vhJihO0bh_xCHY69t7eotTtpmoaSko4k7i8_TKGF4D8Yrj3xuJx1KZ16az3Na4H0qYJqXaGseuJxc5qZcYEKyqwJO9OKEKvR3VTO8X6aTSbhgT1odOdgDdilvRlFVXigWATc9S-mF2X_H5LqW_Y4FcDjXxNBU_HFdIwG3kX383jmMF-b9ICp7a9nKXGjYhJ0I2pILQMPuXS3agR1FWlTzwrY"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">AMD Radeon RX 6700 XT</h4>
+<p class="text-sm text-white/60">12GB GDDR6, RDNA 2</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 145,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">Redline</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-green-500">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span class="font-medium">LKR 435</span>
+</div>
+<svg class="h-6 w-20 text-green-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,15 10,13 20,16 30,12 40,14 50,10 60,12 70,9 80,7"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#141d26] transition-transform hover:scale-[1.02] hover:border-primary/50">
+<img class="aspect-video w-full object-contain p-4" data-alt="NVIDIA GeForce RTX 4080 Super" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbd7eEOcFK7xY4XBnWWey8vCDw-Ii6ueEimQGC3gRN26ZlcAZNIWr9nlFJyWqWb8jlj6Ls-T2ffdXE0FspqpC1_0I4cOVK8BKs6VzUDJChhSdvL6348Km-rM9E0bTEYUkOTha3wrjWJFlXSXFOqZP1XsePS7cZlEWIib0R4eKHdNxwYcc1igqDJLXyLevsj6xiLUpPUCJjx9S6TwctH83HtqMLnLe-XxA6T52MNsU-pX_PoOksfjsy3-dGijk0jBCOaNcToK191Cw"/>
+<div class="flex flex-1 flex-col justify-between p-4 pt-0">
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-lg font-bold text-white">NVIDIA GeForce RTX 4080 Super</h4>
+<p class="text-sm text-white/60">16GB GDDR6X, Ada Lovelace</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-white/60">Lowest Price</p>
+<p class="text-2xl font-bold text-primary">LKR 495,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-white/60">from</p>
+<p class="font-semibold text-white">GameStreet</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-sm text-red-500">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+<span class="font-medium">LKR 990</span>
+</div>
+<svg class="h-6 w-20 text-red-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 80 24">
+<polyline points="0,10 10,14 20,11 30,16 40,13 50,18 60,16 70,20 80,18"></polyline>
+</svg>
+</div>
+</div>
+<button class="mt-4 flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">View Deal</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-background-dark border-t border-white/10 mt-12">
+<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 text-white">
+<span class="material-symbols-outlined text-primary text-3xl">memory</span>
+<h2 class="text-white text-xl font-bold leading-tight">AssembleZ</h2>
+</div>
+<p class="mt-4 text-sm text-white/60">Your guide to the best PC part deals in Sri Lanka.</p>
+</div>
+<div>
+<h3 class="font-bold text-white">Navigation</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="text-white/60 hover:text-white" href="#">Home</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">About Us</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Legal</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="text-white/60 hover:text-white" href="#">Privacy Policy</a></li>
+<li><a class="text-white/60 hover:text-white" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Follow Us</h3>
+<div class="mt-4 flex space-x-4">
+<a class="text-white/60 hover:text-white" href="#">Icon1</a>
+<a class="text-white/60 hover:text-white" href="#">Icon2</a>
+</div>
+</div>
+</div>
+<div class="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
+                    © 2024 AssembleZ. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+</body></html>
