@@ -556,12 +556,14 @@ export function filterProducts(options: {
     filtered = filtered.filter(p => p.brand === options.brand);
   }
 
-  if (options.minPrice !== undefined) {
-    filtered = filtered.filter(p => p.lowestPrice >= options.minPrice!);
+  if (options.minPrice !== undefined && options.minPrice > 0) {
+    const minPrice = options.minPrice;
+    filtered = filtered.filter(p => p.lowestPrice >= minPrice);
   }
 
-  if (options.maxPrice !== undefined) {
-    filtered = filtered.filter(p => p.lowestPrice <= options.maxPrice!);
+  if (options.maxPrice !== undefined && options.maxPrice > 0) {
+    const maxPrice = options.maxPrice;
+    filtered = filtered.filter(p => p.lowestPrice <= maxPrice);
   }
 
   if (options.inStockOnly) {
