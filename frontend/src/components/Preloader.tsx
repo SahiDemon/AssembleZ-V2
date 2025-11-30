@@ -44,8 +44,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 })
                     // 2. Simultaneously animate the text to the header position
                     .to(containerRef.current!.querySelector('.relative'), {
-                        scale: 0.32, // Approximate scale to match text-6xl
-                        y: "-27vh", // Move up to header position
+                        scale: 0.5, // Exact scale to match 600px width (1200 * 0.5 = 600)
+                        x: "-0.09vw",
+                        y: "-27.5vh",
                         duration: 0.8,
                         ease: "power3.inOut"
                     }, "<")
@@ -101,7 +102,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white"
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
         >
             <div className="relative scale-150">
                 <svg width="1200" height="350" viewBox="0 0 1200 350" className="overflow-visible">
@@ -112,8 +113,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                                 y="50%"
                                 textAnchor="middle"
                                 dominantBaseline="middle"
-                                className="font-black tracking-tighter"
-                                style={{ fontSize: "190px", fontFamily: "Inter, sans-serif" }}
+                                className="font-black tracking-tight"
+                                style={{ fontSize: "180px", fontFamily: "var(--font-geist-sans), sans-serif" }}
                             >
                                 AssembleZ
                             </text>
@@ -127,8 +128,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="#151515"
-                        className="font-black tracking-tighter"
-                        style={{ fontSize: "190px", fontFamily: "Inter, sans-serif" }}
+                        className="font-black tracking-tight"
+                        style={{ fontSize: "180px", fontFamily: "var(--font-geist-sans), sans-serif" }}
                     >
                         AssembleZ
                     </text>
