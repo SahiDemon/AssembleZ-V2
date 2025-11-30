@@ -9,11 +9,14 @@ import ProductCard from "@/components/assemblez/product-card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Zap, Shield, Cpu, Gamepad2, HardDrive, MemoryStick, Box, Monitor, ChevronLeft, ChevronRight, Fan, Battery, Cable, Speaker } from "lucide-react";
 
+import Preloader from "@/components/Preloader";
+
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const [featuredScroll, setFeaturedScroll] = useState(0);
   const [trendingScroll, setTrendingScroll] = useState(0);
   const [retailersScroll, setRetailersScroll] = useState(0);
-{/* for vercel*/}
+  {/* for vercel*/ }
   const products = [ // meh tika passe dynamic karamu
     {
       title: "NVIDIA GeForce RTX 4070",
@@ -158,248 +161,254 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full text-white selection:bg-primary/30">
-      <AnimatedBackground />
-      <Header />
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
-      <div className="relative z-10">
-        <SearchHero /> {/* meken search functionality eka implement karanna */}
-        <TrustBanner /> {/* retailers count eka dynamic karanna */}
+      {!isLoading && (
+        <>
+          <AnimatedBackground />
+          <Header />
 
-        {/* Featured Deals Section - API ekin deals tika ganna */}
-        <section className="w-full py-16">
-          <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-2">Featured Deals</h2>
-              <p className="text-gray-400 text-sm">Hot deals on the best PC components</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => scrollFeatured('left')}
-                className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
-              >
-                <ChevronLeft className="h-5 w-5 text-white" />
-              </button>
-              <button
-                onClick={() => scrollFeatured('right')}
-                className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
-              >
-                <ChevronRight className="h-5 w-5 text-white" />
-              </button>
-              <Button variant="outline" className="view-all-btn ml-2">View All</Button>
-            </div>
-          </div>
+          <div className="relative z-10">
+            <SearchHero /> {/* meken search functionality eka implement karanna */}
+            <TrustBanner /> {/* retailers count eka dynamic karanna */}
 
-          <div id="featured-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {products.map((product, index) => (
-              <div key={index} className="flex-none w-[300px]">
-                <ProductCard {...product} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Categories Section - database ekin categories count eka dynamic karamu */}
-        <section className="w-full pt-8 pb-20">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">Browse by Category</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
-              Find exactly what you need for your PC build
-            </p>
-            <Button variant="outline" className="px-8">
-              View All Categories
-            </Button>
-          </div>
-
-          <div className="relative overflow-hidden mt-8 py-4">
-            <div className="flex gap-6 animate-scroll">
-              {[
-                { name: 'CPUs', icon: Cpu, count: '120+' },
-                { name: 'GPUs', icon: Gamepad2, count: '85+' },
-                { name: 'Motherboards', icon: Cpu, count: '150+' },
-                { name: 'RAM', icon: MemoryStick, count: '200+' },
-                { name: 'Storage', icon: HardDrive, count: '180+' },
-                { name: 'Cases', icon: Box, count: '90+' },
-                { name: 'Coolers', icon: Fan, count: '75+' },
-                { name: 'PSU', icon: Battery, count: '110+' },
-                { name: 'Monitors', icon: Monitor, count: '95+' },
-                { name: 'Peripherals', icon: Cable, count: '300+' },
-                { name: 'Audio', icon: Speaker, count: '65+' },
-                { name: 'CPUs', icon: Cpu, count: '120+' },
-                { name: 'GPUs', icon: Gamepad2, count: '85+' },
-                { name: 'Motherboards', icon: Cpu, count: '150+' },
-                { name: 'RAM', icon: MemoryStick, count: '200+' },
-                { name: 'Storage', icon: HardDrive, count: '180+' }
-              ].map((category, index) => {
-                const IconComponent = category.icon;
-                return (
-                  <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-[1.03]">
-                    <div className="p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-110 transition-all overflow-visible">
-                      <IconComponent className="h-8 w-8 text-card-accent" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-1">{category.name}</h3>
-                    <p className="text-xs text-gray-400 group-hover:text-card-accent transition-colors">{category.count} items</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Trending Products Section - view count ekata adala trending products tika pennanna */}
-        <section className="w-full py-8">
-          <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-2">Trending Now</h2>
-              <p className="text-gray-400 text-sm">Most popular products this week</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => scrollTrending('left')}
-                className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
-              >
-                <ChevronLeft className="h-5 w-5 text-white" />
-              </button>
-              <button
-                onClick={() => scrollTrending('right')}
-                className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
-              >
-                <ChevronRight className="h-5 w-5 text-white" />
-              </button>
-              <Button variant="outline" className="view-all-btn ml-2">View All</Button>
-            </div>
-          </div>
-
-          <div id="trending-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {trendingProducts.map((product, index) => (
-              <div key={index} className="flex-none w-[300px]">
-                <ProductCard {...product} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Trusted Retailers Section -  logo images add karannana one hriyata */}
-        <section className="w-full py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Trusted Retailers</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              We partner with Sri Lanka's most trusted computer retailers to bring you the best deals
-            </p>
-          </div>
-
-          <div className="relative overflow-hidden">
-            <div className="flex gap-6 animate-scroll">
-              {['Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans', 'Microimage', 'Singer', 'Softlogic', 'Singhagiri', 'Nanasala', 'Dealz Woot', 'Tech Market', 'Barclays', 'Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans'].map((retailer, index) => (
-                <div key={index} className="group flex-none w-[180px] flex items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer">
-                  <div className="text-center">
-                    <div className="h-12 w-12 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mx-auto mb-3 flex items-center justify-center transition-all">
-                      <span className="text-2xl font-bold text-card-accent">{retailer[0]}</span>
-                    </div>
-                    <p className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors">{retailer}</p>
-                  </div>
+            {/* Featured Deals Section - API ekin deals tika ganna */}
+            <section className="w-full py-16">
+              <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-2">Featured Deals</h2>
+                  <p className="text-gray-400 text-sm">Hot deals on the best PC components</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Choose AssembleZ?</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Your trusted companion for finding the best PC component deals in Sri Lanka
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
-              <div className="p-4 rounded-full bg-card-accent/10 mb-4">
-                <TrendingUp className="h-8 w-8 text-card-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Real-Time Pricing</h3>
-              <p className="text-gray-400 text-sm">
-                Stay updated with hourly price checks across all major retailers in Sri Lanka
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
-              <div className="p-4 rounded-full bg-card-accent/10 mb-4">
-                <Zap className="h-8 w-8 text-card-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Instant Comparison</h3>
-              <p className="text-gray-400 text-sm">
-                Compare prices instantly and find the best deals without visiting multiple sites
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
-              <div className="p-4 rounded-full bg-card-accent/10 mb-4">
-                <Shield className="h-8 w-8 text-card-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Verified Retailers</h3>
-              <p className="text-gray-400 text-sm">
-                Only trusted and verified retailers listed for your peace of mind
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-card-accent/10 to-transparent p-12 text-center backdrop-blur-sm">
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to Build Your Dream PC?</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-              Start comparing prices and find the best deals on all the components you need
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8">
-                Start Searching
-              </Button>
-              <Button size="lg" variant="outline" className="px-8">
-                Browse Categories
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        <footer className="mt-12 border-t border-white/10 bg-black/50 backdrop-blur-md"> {/* social media links add karanna, newsletter signup eka add karanna */}
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-              <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center gap-2">
-                  <div className="h-6 w-6 rounded bg-primary" />
-                  <span className="text-lg font-bold text-white">AssembleZ</span>
+                  <button
+                    onClick={() => scrollFeatured('left')}
+                    className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-white" />
+                  </button>
+                  <button
+                    onClick={() => scrollFeatured('right')}
+                    className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
+                  >
+                    <ChevronRight className="h-5 w-5 text-white" />
+                  </button>
+                  <Button variant="outline" className="view-all-btn ml-2">View All</Button>
                 </div>
-                <p className="mt-4 text-sm text-gray-400">
-                  Your guide to the best PC part deals in Sri Lanka.
-                  We track prices from all major retailers to help you build better for less.
+              </div>
+
+              <div id="featured-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                {products.map((product, index) => (
+                  <div key={index} className="flex-none w-[300px]">
+                    <ProductCard {...product} />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Categories Section - database ekin categories count eka dynamic karamu */}
+            <section className="w-full pt-8 pb-20">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-white mb-4">Browse by Category</h2>
+                <p className="text-gray-400 max-w-2xl mx-auto mb-6">
+                  Find exactly what you need for your PC build
+                </p>
+                <Button variant="outline" className="px-8">
+                  View All Categories
+                </Button>
+              </div>
+
+              <div className="relative overflow-hidden mt-8 py-4">
+                <div className="flex gap-6 animate-scroll">
+                  {[
+                    { name: 'CPUs', icon: Cpu, count: '120+' },
+                    { name: 'GPUs', icon: Gamepad2, count: '85+' },
+                    { name: 'Motherboards', icon: Cpu, count: '150+' },
+                    { name: 'RAM', icon: MemoryStick, count: '200+' },
+                    { name: 'Storage', icon: HardDrive, count: '180+' },
+                    { name: 'Cases', icon: Box, count: '90+' },
+                    { name: 'Coolers', icon: Fan, count: '75+' },
+                    { name: 'PSU', icon: Battery, count: '110+' },
+                    { name: 'Monitors', icon: Monitor, count: '95+' },
+                    { name: 'Peripherals', icon: Cable, count: '300+' },
+                    { name: 'Audio', icon: Speaker, count: '65+' },
+                    { name: 'CPUs', icon: Cpu, count: '120+' },
+                    { name: 'GPUs', icon: Gamepad2, count: '85+' },
+                    { name: 'Motherboards', icon: Cpu, count: '150+' },
+                    { name: 'RAM', icon: MemoryStick, count: '200+' },
+                    { name: 'Storage', icon: HardDrive, count: '180+' }
+                  ].map((category, index) => {
+                    const IconComponent = category.icon;
+                    return (
+                      <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-[1.03]">
+                        <div className="p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-110 transition-all overflow-visible">
+                          <IconComponent className="h-8 w-8 text-card-accent" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-1">{category.name}</h3>
+                        <p className="text-xs text-gray-400 group-hover:text-card-accent transition-colors">{category.count} items</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+
+            {/* Trending Products Section - view count ekata adala trending products tika pennanna */}
+            <section className="w-full py-8">
+              <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-2">Trending Now</h2>
+                  <p className="text-gray-400 text-sm">Most popular products this week</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => scrollTrending('left')}
+                    className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-white" />
+                  </button>
+                  <button
+                    onClick={() => scrollTrending('right')}
+                    className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
+                  >
+                    <ChevronRight className="h-5 w-5 text-white" />
+                  </button>
+                  <Button variant="outline" className="view-all-btn ml-2">View All</Button>
+                </div>
+              </div>
+
+              <div id="trending-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                {trendingProducts.map((product, index) => (
+                  <div key={index} className="flex-none w-[300px]">
+                    <ProductCard {...product} />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Trusted Retailers Section -  logo images add karannana one hriyata */}
+            <section className="w-full py-16">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-white mb-4">Our Trusted Retailers</h2>
+                <p className="text-gray-400 max-w-2xl mx-auto">
+                  We partner with Sri Lanka's most trusted computer retailers to bring you the best deals
                 </p>
               </div>
 
-              <div>
-                <h3 className="font-bold text-white">Navigation</h3>
-                <ul className="mt-4 space-y-2 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-white">Home</a></li>
-                  <li><a href="#" className="hover:text-white">About Us</a></li>
-                  <li><a href="#" className="hover:text-white">Contact</a></li>
-                </ul>
+              <div className="relative overflow-hidden">
+                <div className="flex gap-6 animate-scroll">
+                  {['Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans', 'Microimage', 'Singer', 'Softlogic', 'Singhagiri', 'Nanasala', 'Dealz Woot', 'Tech Market', 'Barclays', 'Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans'].map((retailer, index) => (
+                    <div key={index} className="group flex-none w-[180px] flex items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer">
+                      <div className="text-center">
+                        <div className="h-12 w-12 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mx-auto mb-3 flex items-center justify-center transition-all">
+                          <span className="text-2xl font-bold text-card-accent">{retailer[0]}</span>
+                        </div>
+                        <p className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors">{retailer}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Features Section */}
+            <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-white mb-4">Why Choose AssembleZ?</h2>
+                <p className="text-gray-400 max-w-2xl mx-auto">
+                  Your trusted companion for finding the best PC component deals in Sri Lanka
+                </p>
               </div>
 
-              <div>
-                <h3 className="font-bold text-white">Legal</h3>
-                <ul className="mt-4 space-y-2 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-                  <li><a href="#" className="hover:text-white">Terms of Service</a></li>
-                </ul>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+                  <div className="p-4 rounded-full bg-card-accent/10 mb-4">
+                    <TrendingUp className="h-8 w-8 text-card-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Real-Time Pricing</h3>
+                  <p className="text-gray-400 text-sm">
+                    Stay updated with hourly price checks across all major retailers in Sri Lanka
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+                  <div className="p-4 rounded-full bg-card-accent/10 mb-4">
+                    <Zap className="h-8 w-8 text-card-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Instant Comparison</h3>
+                  <p className="text-gray-400 text-sm">
+                    Compare prices instantly and find the best deals without visiting multiple sites
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+                  <div className="p-4 rounded-full bg-card-accent/10 mb-4">
+                    <Shield className="h-8 w-8 text-card-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Verified Retailers</h3>
+                  <p className="text-gray-400 text-sm">
+                    Only trusted and verified retailers listed for your peace of mind
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-gray-500">
-              © 2025 AssembleZ. All rights reserved.
-            </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-card-accent/10 to-transparent p-12 text-center backdrop-blur-sm">
+                <h2 className="text-3xl font-bold text-white mb-4">Ready to Build Your Dream PC?</h2>
+                <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+                  Start comparing prices and find the best deals on all the components you need
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="px-8">
+                    Start Searching
+                  </Button>
+                  <Button size="lg" variant="outline" className="px-8">
+                    Browse Categories
+                  </Button>
+                </div>
+              </div>
+            </section>
+
+            <footer className="mt-12 border-t border-white/10 bg-black/50 backdrop-blur-md"> {/* social media links add karanna, newsletter signup eka add karanna */}
+              <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+                  <div className="col-span-1 md:col-span-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-6 w-6 rounded bg-primary" />
+                      <span className="text-lg font-bold text-white">AssembleZ</span>
+                    </div>
+                    <p className="mt-4 text-sm text-gray-400">
+                      Your guide to the best PC part deals in Sri Lanka.
+                      We track prices from all major retailers to help you build better for less.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-white">Navigation</h3>
+                    <ul className="mt-4 space-y-2 text-sm text-gray-400">
+                      <li><a href="#" className="hover:text-white">Home</a></li>
+                      <li><a href="#" className="hover:text-white">About Us</a></li>
+                      <li><a href="#" className="hover:text-white">Contact</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-white">Legal</h3>
+                    <ul className="mt-4 space-y-2 text-sm text-gray-400">
+                      <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+                      <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+                  © 2025 AssembleZ. All rights reserved.
+                </div>
+              </div>
+            </footer>
           </div>
-        </footer>
-      </div>
+        </>
+      )}
     </main>
   );
 }
