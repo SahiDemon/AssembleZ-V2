@@ -62,13 +62,13 @@ const Button = React.forwardRef<HTMLButtonElement, LiquidGlassButtonProps>(
       outline: cn(
         "relative overflow-hidden",
         "bg-white/5",
-        "border-2 border-primary/40",
-        "text-primary",
+        "border-2 border-white/20",
+        "text-white",
         "backdrop-blur-md",
-        "shadow-[0_4px_16px_rgba(59,130,246,0.2)]",
-        "hover:bg-primary/15",
-        "hover:border-primary/70",
-        "hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]",
+        "shadow-[0_4px_16px_rgba(255,255,255,0.1)]",
+        "hover:bg-white/15",
+        "hover:border-white/40",
+        "hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]",
         "hover:text-white",
         "transition-all duration-300"
       )
