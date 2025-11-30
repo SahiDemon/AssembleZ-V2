@@ -43,14 +43,10 @@ export default function AnimatedBackground() {
                 this.vy = (Math.random() - 0.5) * 0.3;
                 this.size = Math.random() * 2 + 1;
 
-                // Vibrant Neon Colors: Cyan, Blue, Purple
-                const colors = [
-                    `hsla(190, 100%, 50%, ${Math.random() * 0.4 + 0.1})`, // Cyan
-                    `hsla(220, 100%, 60%, ${Math.random() * 0.4 + 0.1})`, // Blue
-                    `hsla(260, 100%, 65%, ${Math.random() * 0.4 + 0.1})`  // Purple
-                ];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
+                // Single Theme Color: Blue
+                this.color = `hsla(217, 91%, 60%, ${Math.random() * 0.4 + 0.1}`; // Blue (#3b82f6)
             }
+    
 
             update() {
                 this.x += this.vx;
@@ -83,13 +79,11 @@ export default function AnimatedBackground() {
             if (!ctx) return;
             ctx.clearRect(0, 0, width, height);
 
-            // Pure Black Background
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(0, 0, width, height);
+            // Removed black background fill to allow Noise component to show through
 
             // Subtle Gradient Overlay for depth (very faint)
             const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, width);
-            gradient.addColorStop(0, "rgba(20, 30, 50, 0.3)"); // Very subtle blue center
+            gradient.addColorStop(0, "rgba(59, 130, 246, 0.05)"); // Very subtle blue center
             gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, width, height);

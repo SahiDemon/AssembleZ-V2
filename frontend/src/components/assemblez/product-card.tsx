@@ -1,4 +1,4 @@
-import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
+import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp, TrendingUp } from "lucide-react";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ title, specs, price, retailer, image, trend }: ProductCardProps) {
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+        <div className="group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-card-accent hover:shadow-2xl hover:shadow-card-accent/10">
             <div className="relative aspect-video w-full overflow-hidden bg-black/40 p-6">
                 <Image
                     src={image}
@@ -30,14 +30,14 @@ export default function ProductCard({ title, specs, price, retailer, image, tren
             <div className="flex flex-1 flex-col justify-between p-5">
                 <div className="flex flex-col gap-3">
                     <div>
-                        <h4 className="text-lg font-bold text-white line-clamp-2 group-hover:text-primary transition-colors duration-300">{title}</h4>
+                        <h4 className="text-lg font-bold text-white line-clamp-2 group-hover:text-card-accent transition-colors duration-300">{title}</h4>
                         <p className="text-sm text-gray-400 font-medium">{specs}</p>
                     </div>
 
                     <div className="mt-2 flex items-end justify-between border-t border-white/5 pt-4">
                         <div>
                             <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Lowest Price</p>
-                            <p className="text-2xl font-bold text-white group-hover:text-primary transition-colors">{price}</p>
+                            <p className="text-2xl font-bold text-white group-hover:text-card-accent transition-colors">{price}</p>
                         </div>
                         <div className="text-right">
                             <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">from</p>
@@ -56,9 +56,9 @@ export default function ProductCard({ title, specs, price, retailer, image, tren
                     )}
                 </div>
 
-                <LiquidGlassButton className="mt-5 w-full text-white font-bold">
+                <Button className="mt-5 w-full text-white font-bold">
                     View Deal
-                </LiquidGlassButton>
+                </Button>
             </div>
 
             <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">

@@ -1,8 +1,8 @@
 "use client";
 
 import { Menu, Cpu } from "lucide-react";
-import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
-import { LiquidGlassNav } from "@/components/ui/liquid-glass-nav";
+import { Button } from "@/components/ui/button";
+import { NavLink } from "@/components/ui/nav-link";
 
 export default function Header() {
     return (
@@ -14,23 +14,23 @@ export default function Header() {
                 </div>
 
                 <nav className="hidden md:flex items-center gap-3">
-                    <LiquidGlassNav href="#">CPUs</LiquidGlassNav>
-                    <LiquidGlassNav href="#">GPUs</LiquidGlassNav>
-                    <LiquidGlassNav href="#">Motherboards</LiquidGlassNav>
-                    <LiquidGlassNav href="#">RAM</LiquidGlassNav>
-                    <LiquidGlassNav href="#">Storage</LiquidGlassNav>
+                    <NavLink href="#">CPUs</NavLink>
+                    <NavLink href="#">GPUs</NavLink>
+                    <NavLink href="#">Motherboards</NavLink>
+                    <NavLink href="#">RAM</NavLink>
+                    <NavLink href="#">Storage</NavLink>
                 </nav>
 
                 <div className="flex items-center gap-4">
-                    <LiquidGlassButton variant="ghost" className="hidden sm:inline-flex">
+                    <Button variant="ghost" className="hidden sm:inline-flex">
                         Log in
-                    </LiquidGlassButton>
-                    <LiquidGlassButton className="text-white">
+                    </Button>
+                    <Button className="text-white">
                         Sign up
-                    </LiquidGlassButton>
-                    <LiquidGlassButton variant="ghost" size="icon" className="md:hidden">
+                    </Button>
+                    <Button variant="ghost" size="icon" className="md:hidden">
                         <Menu className="h-6 w-6" />
-                    </LiquidGlassButton>
+                    </Button>
                 </div>
             </div>
         </header>

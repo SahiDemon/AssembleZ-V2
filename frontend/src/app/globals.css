@@ -6,8 +6,12 @@
   /* AssembleZ Custom Colors */
   --color-assemblez-bg: #000000;
   --color-assemblez-card: #0a0a0a;
-  --color-assemblez-primary: #06b6d4;
+  --color-assemblez-primary: #050a1e;
   --color-assemblez-accent: #3b82f6;
+
+  /* Custom Accent Colors */
+  --color-card-accent: var(--card-accent);
+  --color-background-accent: var(--background-accent);
 
   /* Shadcn Colors Mapping */
   --color-background: var(--background);
@@ -126,6 +130,9 @@
   --ring: #08194e;
   --radius: 0.5rem;
 
+  /* Custom Accent Variables */
+  --card-accent: #859bff !important;
+  --background-accent: #03002b !important;
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #08194e;

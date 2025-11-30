@@ -1,4 +1,4 @@
-import Header from "@/components/Main/Header";
+import Header from "@/components/layout/header";
 import AnimatedBackground from "@/components/ui/animated-background";
 import SearchHero from "@/components/assemblez/search-hero";
 import TrustBanner from "@/components/assemblez/trust-banner";

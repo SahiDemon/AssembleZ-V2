@@ -8,7 +8,7 @@ interface LiquidGlassNavProps extends React.AnchorHTMLAttributes<HTMLAnchorEleme
   active?: boolean;
 }
 
-const LiquidGlassNav = React.forwardRef<HTMLAnchorElement, LiquidGlassNavProps>(
+const NavLink = React.forwardRef<HTMLAnchorElement, LiquidGlassNavProps>(
   ({ className, children, active = false, ...props }, ref) => {
     const [mousePosition, setMousePosition] = React.useState({ x: 50, y: 50 });
     const [isHovered, setIsHovered] = React.useState(false);
@@ -111,6 +111,6 @@ const LiquidGlassNav = React.forwardRef<HTMLAnchorElement, LiquidGlassNavProps>(
   }
 );
 
-LiquidGlassNav.displayName = "LiquidGlassNav";
+NavLink.displayName = "NavLink";
 
-export { LiquidGlassNav };
+export { NavLink };

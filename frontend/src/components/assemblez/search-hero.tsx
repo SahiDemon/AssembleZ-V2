@@ -1,6 +1,6 @@
 import { Search, Cpu, Gamepad2, HardDrive, MemoryStick, Monitor, Box } from "lucide-react";
-import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
-import DarkVeil from "./DarkVeil";
+import { Button } from "@/components/ui/button";
+import DarkVeil from "./dark-veil";
 
 export default function SearchHero() {
     const categories = [
@@ -46,9 +46,9 @@ export default function SearchHero() {
                         placeholder="Search for a CPU, GPU, Motherboard..."
                         className="flex-1 bg-transparent px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none"
                     />
-                    <LiquidGlassButton className="h-12 px-8 font-bold text-white">
+                    <Button className="h-12 px-8 font-bold text-white">
                         Search
-                    </LiquidGlassButton>
+                    </Button>
                 </div>
             </div>
 
