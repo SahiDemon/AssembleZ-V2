@@ -22,7 +22,7 @@ export default function Home() {
   const [trendingScroll, setTrendingScroll] = useState(0);
   const [retailersScroll, setRetailersScroll] = useState(0);
   const mainRef = useRef<HTMLDivElement>(null);
-  {/* for vercel*/ }
+
   const products = [ // meh tika passe dynamic karamu
     {
       title: "NVIDIA GeForce RTX 4070",
