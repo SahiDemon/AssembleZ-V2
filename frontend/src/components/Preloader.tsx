@@ -36,21 +36,35 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                     onComplete: onComplete
                 });
 
+                // Get actual DOM element positions for dynamic calculation
+                const preloaderEl = containerRef.current!.querySelector('.relative')! as HTMLElement;
+                const heroTitleEl = document.querySelector('#hero-title')! as HTMLElement;
+
+                const preloaderRect = preloaderEl.getBoundingClientRect();
+                const heroRect = heroTitleEl.getBoundingClientRect();
+
+                // Calculate the exact translation needed
+                const deltaX = heroRect.left + (heroRect.width / 2) - (preloaderRect.left + (preloaderRect.width / 2));
+                const deltaY = heroRect.top + (heroRect.height / 2) - (preloaderRect.top + (preloaderRect.height / 2));
+
+                // Calculate scale to match the width
+                const scaleValue = heroRect.width / preloaderRect.width;
+
                 // 1. Fade out the black background immediately to reveal homepage
                 tl.to(containerRef.current, {
                     backgroundColor: "transparent",
                     duration: 0.5,
                     ease: "power2.inOut"
                 })
-                    // 2. Simultaneously animate the text to the header position
-                    .to(containerRef.current!.querySelector('.relative'), {
-                        scale: 0.5, // Exact scale to match 600px width (1200 * 0.5 = 600)
-                        x: "-0.09vw",
-                        y: "-27.5vh",
+                    // 2. Animate the text to the exact position of the hero title
+                    .to(preloaderEl, {
+                        x: deltaX,
+                        y: deltaY,
+                        scale: scaleValue,
                         duration: 0.8,
                         ease: "power3.inOut"
                     }, "<")
-                    // 3. Fade in the real title and fade out the preloader text
+                    // 3. Fade in the real title
                     .to("#hero-title", {
                         opacity: 1,
                         duration: 0.3,
@@ -86,7 +100,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             repeat: -1
         });
 
-        // Vertical fill animation - 3 seconds duration
+        // Vertical fill animation - 2.5 seconds duration
         tl.to(fillGroupRef.current, {
             y: 50, // Calibrated for sync
             duration: 2.5,
@@ -104,7 +118,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             ref={containerRef}
             className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
         >
-            <div className="relative scale-150">
+            <div className="relative">
                 <svg width="1200" height="350" viewBox="0 0 1200 350" className="overflow-visible">
                     <defs>
                         <clipPath id="text-clip">
