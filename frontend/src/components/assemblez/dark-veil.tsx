@@ -2,6 +2,8 @@
 
 import { useRef, useEffect } from 'react';
 import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const vertex = `
 attribute vec2 position;
@@ -83,6 +85,7 @@ type Props = {
   scanlineFrequency?: number;
   warpAmount?: number;
   resolutionScale?: number;
+  show?: boolean;
 };
 
 export default function DarkVeil({
@@ -92,9 +95,21 @@ export default function DarkVeil({
   speed = 0.5,
   scanlineFrequency = 0,
   warpAmount = 0,
-  resolutionScale = 1
+  resolutionScale = 1,
+  show = false
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.set(containerRef.current, { opacity: 0 });
+    if (!show) return;
+    gsap.to(containerRef.current, {
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.inOut",
+    });
+  }, { dependencies: [show], scope: containerRef });
   useEffect(() => {
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
@@ -154,5 +169,9 @@ export default function DarkVeil({
       window.removeEventListener('resize', resize);
     };
   }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale]);
-  return <canvas ref={ref} className="w-full h-full block" />;
+  return (
+    <div ref={containerRef} className="w-full h-full">
+      <canvas ref={ref} className="w-full h-full block" />
+    </div>
+  );
 }

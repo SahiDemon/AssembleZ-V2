@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "@/components/layout/header";
 import AnimatedBackground from "@/components/ui/animated-background";
 import SearchHero from "@/components/assemblez/search-hero";
@@ -8,14 +8,20 @@ import TrustBanner from "@/components/assemblez/trust-banner";
 import ProductCard from "@/components/assemblez/product-card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Zap, Shield, Cpu, Gamepad2, HardDrive, MemoryStick, Box, Monitor, ChevronLeft, ChevronRight, Fan, Battery, Cable, Speaker } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Preloader from "@/components/Preloader";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [featuredScroll, setFeaturedScroll] = useState(0);
   const [trendingScroll, setTrendingScroll] = useState(0);
   const [retailersScroll, setRetailersScroll] = useState(0);
+  const mainRef = useRef<HTMLDivElement>(null);
   {/* for vercel*/ }
   const products = [ // meh tika passe dynamic karamu
     {
@@ -159,21 +165,138 @@ export default function Home() {
     }
   };
 
+  useGSAP(() => {
+    gsap.set("#featured-section .section-header", { opacity: 0, y: 30 });
+    gsap.set("#featured-scroll > div", { opacity: 0, y: 40, scale: 0.97 });
+    gsap.set("#categories-section .section-header", { opacity: 0, scale: 0.95 });
+    gsap.set("#trending-section .section-header", { opacity: 0, x: -30 });
+    gsap.set("#trending-scroll > div", { opacity: 0, y: 40, scale: 0.97 });
+    gsap.set("#retailers-section .section-header", { opacity: 0, y: 30 });
+    gsap.set("#features-section .section-header", { opacity: 0, y: 30 });
+    gsap.set("#features-section .feature-card", { opacity: 0, y: 40, rotateX: -10 });
+    gsap.set("#cta-section", { opacity: 0, scale: 0.97 });
+
+    if (isLoading) return;
+
+    const masterTl = gsap.timeline({ delay: 1.0 });
+
+    masterTl.add(() => {
+      gsap.to("#featured-section .section-header", {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    })
+    .add(() => {
+      gsap.to("#featured-scroll > div", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.35,
+        stagger: 0.04,
+        ease: "power2.out",
+      });
+    }, "+=0.1");
+
+    gsap.to("#categories-section .section-header", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#categories-section",
+        start: "top 90%",
+      }
+    });
+
+    gsap.to("#trending-section .section-header", {
+      opacity: 1,
+      x: 0,
+      duration: 0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#trending-section",
+        start: "top 90%",
+      }
+    });
+
+    gsap.to("#trending-scroll > div", {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.35,
+      stagger: 0.04,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#trending-scroll",
+        start: "top 90%",
+      }
+    });
+
+    gsap.to("#retailers-section .section-header", {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#retailers-section",
+        start: "top 90%",
+      }
+    });
+
+    gsap.to("#features-section .section-header", {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#features-section",
+        start: "top 90%",
+      }
+    });
+
+    gsap.to("#features-section .feature-card", {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      duration: 0.4,
+      stagger: 0.08,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#features-section",
+        start: "top 85%",
+      }
+    });
+
+    gsap.to("#cta-section", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#cta-section",
+        start: "top 90%",
+      }
+    });
+
+  }, { dependencies: [isLoading], scope: mainRef });
+
   return (
-    <main className="relative min-h-screen w-full text-white selection:bg-primary/30">
+    <main ref={mainRef} className="relative min-h-screen w-full text-white selection:bg-primary/30">
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
       <div className="relative">
         <AnimatedBackground />
-        <Header />
+        <Header show={!isLoading} />
 
         <div className="relative z-10">
           <SearchHero showTitle={!isLoading} /> {/* meken search functionality eka implement karanna */}
-          <TrustBanner /> {/* retailers count eka dynamic karanna */}
+          <TrustBanner showContent={!isLoading} /> {/* retailers count eka dynamic karanna */}
 
           {/* Featured Deals Section - API ekin deals tika ganna */}
-          <section className="w-full py-16">
-            <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
+          <section id="featured-section" className="w-full py-16">
+            <div className="section-header flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
               <div>
                 <h2 className="text-3xl font-bold text-white mb-2">Featured Deals</h2>
                 <p className="text-gray-400 text-sm">Hot deals on the best PC components</p>
@@ -205,8 +328,8 @@ export default function Home() {
           </section>
 
           {/* Categories Section - database ekin categories count eka dynamic karamu */}
-          <section className="w-full pt-8 pb-20">
-            <div className="text-center mb-8">
+          <section id="categories-section" className="w-full pt-8 pb-20">
+            <div className="section-header text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">Browse by Category</h2>
               <p className="text-gray-400 max-w-2xl mx-auto mb-6">
                 Find exactly what you need for your PC build
@@ -238,12 +361,13 @@ export default function Home() {
                 ].map((category, index) => {
                   const IconComponent = category.icon;
                   return (
-                    <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-[1.03]">
-                      <div className="p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-110 transition-all overflow-visible">
-                        <IconComponent className="h-8 w-8 text-card-accent" />
+                    <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-500 cursor-pointer hover:scale-[1.08] hover:-translate-y-1 hover:shadow-2xl hover:shadow-card-accent/20 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-card-accent/0 via-card-accent/5 to-card-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative z-10 p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 overflow-visible">
+                        <IconComponent className="h-8 w-8 text-card-accent group-hover:drop-shadow-[0_0_8px_rgba(133,155,255,0.6)]" />
                       </div>
-                      <h3 className="text-lg font-bold text-white mb-1">{category.name}</h3>
-                      <p className="text-xs text-gray-400 group-hover:text-card-accent transition-colors">{category.count} items</p>
+                      <h3 className="relative z-10 text-lg font-bold text-white mb-1 group-hover:text-card-accent transition-colors duration-300">{category.name}</h3>
+                      <p className="relative z-10 text-xs text-gray-400 group-hover:text-card-accent transition-colors duration-300">{category.count} items</p>
                     </div>
                   );
                 })}
@@ -252,8 +376,8 @@ export default function Home() {
           </section>
 
           {/* Trending Products Section - view count ekata adala trending products tika pennanna */}
-          <section className="w-full py-8">
-            <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
+          <section id="trending-section" className="w-full py-8">
+            <div className="section-header flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
               <div>
                 <h2 className="text-3xl font-bold text-white mb-2">Trending Now</h2>
                 <p className="text-gray-400 text-sm">Most popular products this week</p>
@@ -285,8 +409,8 @@ export default function Home() {
           </section>
 
           {/* Trusted Retailers Section -  logo images add karannana one hriyata */}
-          <section className="w-full py-16">
-            <div className="text-center mb-12">
+          <section id="retailers-section" className="w-full py-16">
+            <div className="section-header text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Our Trusted Retailers</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 We partner with Sri Lanka's most trusted computer retailers to bring you the best deals
@@ -296,12 +420,13 @@ export default function Home() {
             <div className="relative overflow-hidden">
               <div className="flex gap-6 animate-scroll">
                 {['Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans', 'Microimage', 'Singer', 'Softlogic', 'Singhagiri', 'Nanasala', 'Dealz Woot', 'Tech Market', 'Barclays', 'Nanotek', 'Redline', 'GameStreet', 'TechLanka', 'Unity Plaza', 'PCOne', 'NetSL', 'Abans'].map((retailer, index) => (
-                  <div key={index} className="group flex-none w-[180px] flex items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <div className="h-12 w-12 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mx-auto mb-3 flex items-center justify-center transition-all">
-                        <span className="text-2xl font-bold text-card-accent">{retailer[0]}</span>
+                  <div key={index} className="group flex-none w-[180px] flex items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-500 cursor-pointer hover:scale-110 hover:shadow-xl hover:shadow-card-accent/10 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-card-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="text-center relative z-10">
+                      <div className="h-12 w-12 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mx-auto mb-3 flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:rotate-12">
+                        <span className="text-2xl font-bold text-card-accent group-hover:drop-shadow-[0_0_6px_rgba(133,155,255,0.5)]">{retailer[0]}</span>
                       </div>
-                      <p className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors">{retailer}</p>
+                      <p className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors duration-300">{retailer}</p>
                     </div>
                   </div>
                 ))}
@@ -310,8 +435,8 @@ export default function Home() {
           </section>
 
           {/* Features Section */}
-          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+          <section id="features-section" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="section-header text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Why Choose AssembleZ?</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 Your trusted companion for finding the best PC component deals in Sri Lanka
@@ -319,7 +444,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+              <div className="feature-card flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
                 <div className="p-4 rounded-full bg-card-accent/10 mb-4">
                   <TrendingUp className="h-8 w-8 text-card-accent" />
                 </div>
@@ -329,7 +454,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+              <div className="feature-card flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
                 <div className="p-4 rounded-full bg-card-accent/10 mb-4">
                   <Zap className="h-8 w-8 text-card-accent" />
                 </div>
@@ -339,7 +464,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
+              <div className="feature-card flex flex-col items-center text-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 transition-all duration-300">
                 <div className="p-4 rounded-full bg-card-accent/10 mb-4">
                   <Shield className="h-8 w-8 text-card-accent" />
                 </div>
@@ -352,7 +477,7 @@ export default function Home() {
           </section>
 
           {/* CTA Section */}
-          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <section id="cta-section" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-card-accent/10 to-transparent p-12 text-center backdrop-blur-sm">
               <h2 className="text-3xl font-bold text-white mb-4">Ready to Build Your Dream PC?</h2>
               <p className="text-gray-400 max-w-2xl mx-auto mb-8">

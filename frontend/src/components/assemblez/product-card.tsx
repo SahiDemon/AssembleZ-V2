@@ -16,8 +16,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ title, specs, price, retailer, image, trend }: ProductCardProps) {
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-card-accent hover:shadow-2xl hover:shadow-card-accent/10">
+        <div className="group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-card-accent hover:shadow-xl hover:shadow-card-accent/10 hover:-translate-y-1">
             <div className="relative aspect-video w-full overflow-hidden bg-black/40 p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-card-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <Image
                     src={image}
                     alt={title}
@@ -64,6 +65,9 @@ export default function ProductCard({ title, specs, price, retailer, image, tren
             <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer-fast bg-gradient-to-r from-transparent via-white/5 to-transparent" />
             </div>
+            
+            {/* Subtle glow effect on hover */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-card-accent/0 via-card-accent/10 to-card-accent/0 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-300 -z-10" />
         </div>
     );
 }
