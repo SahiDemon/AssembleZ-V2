@@ -29,7 +29,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <div className="fixed inset-0 -z-10 h-full w-full bg-black">
-          {/* <Noise patternAlpha={0} /> meka on kranwad nadda kiyala hithanne one */}
+          {/* 1.5 add kare premium feel ekata adu wedi krala balapn meka thiaynwada nadda kiyala balnna */}
+          <Noise patternAlpha={1.5} />
         </div>
         {children}
       </body>

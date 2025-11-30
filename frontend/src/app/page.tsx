@@ -173,13 +173,13 @@ export default function Home() {
               <p className="text-gray-400 text-sm">Hot deals on the best PC components</p>
             </div>
             <div className="flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => scrollFeatured('left')}
                 className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
               >
                 <ChevronLeft className="h-5 w-5 text-white" />
               </button>
-              <button 
+              <button
                 onClick={() => scrollFeatured('right')}
                 className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
               >
@@ -199,7 +199,7 @@ export default function Home() {
         </section>
 
         {/* Categories Section - database ekin categories count eka dynamic karamu */}
-        <section className="w-full py-16">
+        <section className="w-full pt-8 pb-20">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-4">Browse by Category</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-6">
@@ -210,7 +210,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="relative overflow-hidden mt-8">
+          <div className="relative overflow-hidden mt-8 py-4">
             <div className="flex gap-6 animate-scroll">
               {[
                 { name: 'CPUs', icon: Cpu, count: '120+' },
@@ -232,8 +232,8 @@ export default function Home() {
               ].map((category, index) => {
                 const IconComponent = category.icon;
                 return (
-                  <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-105">
-                    <div className="p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-110 transition-all">
+                  <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-[1.03]">
+                    <div className="p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-110 transition-all overflow-visible">
                       <IconComponent className="h-8 w-8 text-card-accent" />
                     </div>
                     <h3 className="text-lg font-bold text-white mb-1">{category.name}</h3>
@@ -246,20 +246,20 @@ export default function Home() {
         </section>
 
         {/* Trending Products Section - view count ekata adala trending products tika pennanna */}
-        <section className="w-full py-16">
+        <section className="w-full py-8">
           <div className="flex items-center justify-between mb-8 px-4 sm:px-6 lg:px-8">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">Trending Now</h2>
               <p className="text-gray-400 text-sm">Most popular products this week</p>
             </div>
             <div className="flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => scrollTrending('left')}
                 className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
               >
                 <ChevronLeft className="h-5 w-5 text-white" />
               </button>
-              <button 
+              <button
                 onClick={() => scrollTrending('right')}
                 className="carousel-nav-btn p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-card-accent/50 transition-all"
               >
