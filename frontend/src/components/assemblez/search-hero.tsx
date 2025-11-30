@@ -1,5 +1,6 @@
 import { Search, Cpu, Gamepad2, HardDrive, MemoryStick, Monitor, Box } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DarkVeil from "./DarkVeil";
 
 export default function SearchHero() {
     const categories = [
@@ -13,12 +14,20 @@ export default function SearchHero() {
 
     return (
         <section className="relative flex flex-col items-center justify-center gap-8 px-4 py-20 text-center md:py-28 overflow-hidden">
-            {/* Background Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black z-0" />
+            {/* DarkVeil Background with Midnight Blue Theme */}
+            <div className="absolute inset-0 z-0">
+                <DarkVeil 
+                    hueShift={24}
+                    noiseIntensity={0.01}
+                    scanlineIntensity={0}
+                    speed={0.5}
+                    scanlineFrequency={0}
+                    warpAmount={0}
+                />
+            </div>
 
-            {/* Glow Orbs - Repositioned for better framing */}
-            <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/20 blur-[150px] pointer-events-none z-0 animate-pulse-glow" />
-            <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 h-[600px] w-[600px] rounded-full bg-purple-600/20 blur-[150px] pointer-events-none z-0 animate-pulse-glow" style={{ animationDelay: "2s" }} />
+            {/* Background Gradient Overlay for better text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/40 to-black/80 z-[1]" />
 
             <div className="relative z-10 flex flex-col gap-4 max-w-4xl mx-auto">
                 <h1 className="text-4xl font-black leading-tight tracking-tight text-white md:text-6xl animate-slide-up">
