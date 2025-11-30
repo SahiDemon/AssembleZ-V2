@@ -6,8 +6,8 @@
   /* AssembleZ Custom Colors */
   --color-assemblez-bg: #000000;
   --color-assemblez-card: #0a0a0a;
-  --color-assemblez-primary: #3b82f6;
-  --color-assemblez-accent: #06b6d4;
+  --color-assemblez-primary: #06b6d4;
+  --color-assemblez-accent: #3b82f6;
 
   /* Shadcn Colors Mapping */
   --color-background: var(--background);
@@ -110,7 +110,7 @@
   --card-foreground: #ffffff;
   --popover: #0a0a0a;
   --popover-foreground: #ffffff;
-  --primary: #3b82f6;
+  --primary: #133883;
   --primary-foreground: #ffffff;
   --secondary: #171717;
   --secondary-foreground: #ffffff;
@@ -123,17 +123,17 @@
   --border: #262626;
   /* Dark gray border */
   --input: #262626;
-  --ring: #3b82f6;
+  --ring: #08194e;
   --radius: 0.5rem;
 
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #08194e;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #171717;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #262626;
-  --sidebar-ring: #3b82f6;
+  --sidebar-ring: #08194e;
 }
 
 @layer base {
@@ -146,7 +146,8 @@
   }
 
   body {
-    @apply bg-black text-white antialiased;
+    @apply text-white antialiased;
+    background-color: transparent;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;

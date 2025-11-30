@@ -58,7 +58,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative min-h-screen w-full bg-black text-white selection:bg-primary/30">
+    <main className="relative min-h-screen w-full text-white selection:bg-primary/30">
       <AnimatedBackground />
       <Header />
 
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
         </div>
 
-        <footer className="mt-12 border-t border-white/10 bg-black">
+        <footer className="mt-12 border-t border-white/10 bg-black/50 backdrop-blur-md">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
               <div className="col-span-1 md:col-span-2">
