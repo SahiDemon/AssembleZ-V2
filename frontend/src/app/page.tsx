@@ -15,7 +15,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Preloader from "@/components/Preloader";
 
 gsap.registerPlugin(ScrollTrigger);
-
+// for vecel
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [featuredScroll, setFeaturedScroll] = useState(0);
