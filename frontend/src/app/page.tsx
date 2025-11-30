@@ -23,6 +23,14 @@ export default function Home() {
   const [retailersScroll, setRetailersScroll] = useState(0);
   const mainRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, []);
+
   const products = [ // meh tika passe dynamic karamu
     {
       title: "NVIDIA GeForce RTX 4070",
@@ -320,7 +328,7 @@ export default function Home() {
 
             <div id="featured-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {products.map((product, index) => (
-                <div key={index} className="flex-none w-[300px]">
+                <div key={index} className="flex-none w-[340px]">
                   <ProductCard {...product} />
                 </div>
               ))}
@@ -361,13 +369,13 @@ export default function Home() {
                 ].map((category, index) => {
                   const IconComponent = category.icon;
                   return (
-                    <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-500 cursor-pointer hover:scale-[1.08] hover:-translate-y-1 hover:shadow-2xl hover:shadow-card-accent/20 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-card-accent/0 via-card-accent/5 to-card-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="relative z-10 p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 overflow-visible">
-                        <IconComponent className="h-8 w-8 text-card-accent group-hover:drop-shadow-[0_0_8px_rgba(133,155,255,0.6)]" />
+                    <div key={index} className="group flex-none w-[200px] flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-card-accent/50 hover:bg-white/10 transition-all duration-300 cursor-pointer relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-card-accent/0 via-card-accent/5 to-card-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative z-10 p-3 rounded-full bg-card-accent/10 group-hover:bg-card-accent/20 mb-3 transition-all duration-300">
+                        <IconComponent className="h-8 w-8 text-card-accent" />
                       </div>
                       <h3 className="relative z-10 text-lg font-bold text-white mb-1 group-hover:text-card-accent transition-colors duration-300">{category.name}</h3>
-                      <p className="relative z-10 text-xs text-gray-400 group-hover:text-card-accent transition-colors duration-300">{category.count} items</p>
+                      <p className="relative z-10 text-xs text-gray-400">{category.count} items</p>
                     </div>
                   );
                 })}
@@ -401,7 +409,7 @@ export default function Home() {
 
             <div id="trending-scroll" className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-4 sm:px-6 lg:px-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {trendingProducts.map((product, index) => (
-                <div key={index} className="flex-none w-[300px]">
+                <div key={index} className="flex-none w-[340px]">
                   <ProductCard {...product} />
                 </div>
               ))}

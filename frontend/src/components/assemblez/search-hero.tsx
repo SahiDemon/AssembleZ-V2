@@ -26,6 +26,7 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
         gsap.set(".hero-subtitle", { y: 20 });
         gsap.set(".hero-search", { y: 30, scale: 0.95 });
         gsap.set(".hero-category-btn", { opacity: 0, scale: 0.8, y: 20 });
+        gsap.set(".hero-gradient-overlay", { opacity: 0 });
 
         if (!showTitle) return;
 
@@ -78,27 +79,32 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
 
         const heroTl = gsap.timeline({ delay: 0.05 });
         
-        heroTl.to(".hero-subtitle", {
+        heroTl.to(".hero-gradient-overlay", {
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.inOut",
+        })
+        .to(".hero-subtitle", {
             opacity: 1,
             y: 0,
-            duration: 0.3,
+            duration: 0.25,
             ease: "power2.out",
-        })
+        }, "-=0.3")
         .to(".hero-search", {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.out",
-        }, "-=0.15")
+        }, "-=0.1")
         .to(".hero-category-btn", {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.3,
-            stagger: 0.03,
+            duration: 0.25,
+            stagger: 0.02,
             ease: "power2.out",
-        }, "-=0.2");
+        }, "-=0.15");
 
     }, { dependencies: [showTitle], scope: heroRef });
 
@@ -126,8 +132,7 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
                 />
             </div>
 
-            {/* Background Gradient Overlay for better text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/40 to-black/80 z-[1]" />
+            <div className="hero-gradient-overlay absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/40 to-black/80 z-[1]" />
 
             {/* Title Section - Hidden initially for animation */}
             <div className="relative z-10 flex flex-col gap-4 max-w-4xl mx-auto items-center">
