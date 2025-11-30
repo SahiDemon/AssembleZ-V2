@@ -37,27 +37,32 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 });
 
                 // Get actual DOM element positions for dynamic calculation
-                const preloaderEl = containerRef.current!.querySelector('.relative')! as HTMLElement;
-                const heroTitleEl = document.querySelector('#hero-title')! as HTMLElement;
+                const preloaderSvg = containerRef.current!.querySelector('svg')! as SVGElement;
+                const heroTitleSvg = document.querySelector('#hero-title svg')! as SVGElement;
 
-                const preloaderRect = preloaderEl.getBoundingClientRect();
-                const heroRect = heroTitleEl.getBoundingClientRect();
+                const preloaderRect = preloaderSvg.getBoundingClientRect();
+                const heroRect = heroTitleSvg.getBoundingClientRect();
 
-                // Calculate the exact translation needed
+                // Calculate the exact translation needed (center to center)
                 const deltaX = heroRect.left + (heroRect.width / 2) - (preloaderRect.left + (preloaderRect.width / 2));
                 const deltaY = heroRect.top + (heroRect.height / 2) - (preloaderRect.top + (preloaderRect.height / 2));
 
                 // Calculate scale to match the width
                 const scaleValue = heroRect.width / preloaderRect.width;
 
-                // 1. Fade out the black background immediately to reveal homepage
+                // 1. Fade out the black background and percentage indicator
                 tl.to(containerRef.current, {
                     backgroundColor: "transparent",
                     duration: 0.5,
                     ease: "power2.inOut"
                 })
-                    // 2. Animate the text to the exact position of the hero title
-                    .to(preloaderEl, {
+                    .to(containerRef.current!.querySelector('.percentage-indicator'), {
+                        opacity: 0,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    }, "<")
+                    // 2. Animate the SVG to the exact position of the hero title
+                    .to(preloaderSvg, {
                         x: deltaX,
                         y: deltaY,
                         scale: scaleValue,
@@ -118,8 +123,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             ref={containerRef}
             className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
         >
-            <div className="relative">
-                <svg width="1200" height="350" viewBox="0 0 1200 350" className="overflow-visible">
+            <div className="relative w-full max-w-6xl px-4">
+                <svg viewBox="0 0 1200 350" className="w-full h-auto overflow-visible">
                     <defs>
                         <clipPath id="text-clip">
                             <text
@@ -168,7 +173,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 </svg>
 
                 {/* Percentage Indicator - right side under Z */}
-                <div className="absolute bottom-24 right-16 font-mono text-sm text-gray-400">
+                <div className="percentage-indicator absolute bottom-[15%] right-[8%] font-mono text-xs sm:text-sm text-gray-400">
                     loading... {progress}%
                 </div>
             </div>

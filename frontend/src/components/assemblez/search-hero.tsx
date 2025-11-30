@@ -39,7 +39,7 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
                     id="hero-title"
                     className={`w-full max-w-[600px] transition-opacity duration-0 ${showTitle ? 'opacity-100' : 'opacity-0'}`}
                 >
-                    <svg viewBox="0 0 1200 350" className="w-full h-auto overflow-visible">
+                    <svg viewBox="0 0 1200 200" className="w-full h-auto overflow-visible">
                         <text
                             x="50%"
                             y="50%"
