@@ -1,5 +1,5 @@
 import { Search, Cpu, Gamepad2, HardDrive, MemoryStick, Monitor, Box } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
 import DarkVeil from "./DarkVeil";
 
 export default function SearchHero() {
@@ -13,7 +13,7 @@ export default function SearchHero() {
     ];
 
     return (
-        <section className="relative flex flex-col items-center justify-center gap-8 px-4 py-20 text-center md:py-28 overflow-hidden">
+        <section className="relative flex flex-col items-center justify-center gap-8 px-4 pt-36 pb-20 text-center md:pt-44 md:pb-28 overflow-hidden">
             {/* DarkVeil Background with Midnight Blue Theme */}
             <div className="absolute inset-0 z-0">
                 <DarkVeil 
@@ -46,9 +46,9 @@ export default function SearchHero() {
                         placeholder="Search for a CPU, GPU, Motherboard..."
                         className="flex-1 bg-transparent px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none"
                     />
-                    <Button className="h-12 px-8 font-bold bg-primary hover:bg-primary/90">
+                    <LiquidGlassButton className="h-12 px-8 font-bold text-white">
                         Search
-                    </Button>
+                    </LiquidGlassButton>
                 </div>
             </div>
 
@@ -56,9 +56,9 @@ export default function SearchHero() {
                 {categories.map((cat, index) => (
                     <button
                         key={index}
-                        className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-primary/50 hover:text-primary"
+                        className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-gray-300 transition-all hover:border-primary/50 hover:bg-white/10 hover:text-white"
                     >
-                        <cat.icon className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
+                        <cat.icon className="h-4 w-4 text-primary/70 transition-colors group-hover:text-primary" />
                         {cat.name}
                     </button>
                 ))}

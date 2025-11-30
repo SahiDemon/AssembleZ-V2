@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
 import { ArrowDown, ArrowUp, TrendingUp } from "lucide-react";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ title, specs, price, retailer, image, trend }: ProductCardProps) {
     return (
-        <div className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+        <div className="group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
             <div className="relative aspect-video w-full overflow-hidden bg-black/40 p-6">
                 <Image
                     src={image}
@@ -56,11 +56,13 @@ export default function ProductCard({ title, specs, price, retailer, image, tren
                     )}
                 </div>
 
-                <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/5 to-transparent z-10 pointer-events-none" />
-
-                <Button className="mt-5 w-full bg-white/5 border border-primary/50 text-primary font-bold shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:text-white transition-all duration-300 backdrop-blur-md">
+                <LiquidGlassButton className="mt-5 w-full text-white font-bold">
                     View Deal
-                </Button>
+                </LiquidGlassButton>
+            </div>
+
+            <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer-fast bg-gradient-to-r from-transparent via-white/5 to-transparent" />
             </div>
         </div>
     );

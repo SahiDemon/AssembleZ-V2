@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { ArrowRight, Play, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -28,12 +28,12 @@ export default function HeroSection() {
                 </p>
 
                 <div className="animate-slide-up flex flex-col items-center justify-center gap-4 opacity-0 sm:flex-row" style={{ animationDelay: "0.8s" }}>
-                    <Button size="lg" className="h-14 min-w-[200px] bg-gradient-to-r from-indigo-600 to-purple-600 text-lg font-semibold text-white shadow-lg shadow-indigo-500/30 hover:scale-105 hover:shadow-indigo-500/50 transition-all duration-300">
+                    <GlassButton size="lg" className="h-14 min-w-[200px] text-lg font-semibold text-white">
                         Get Started <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button size="lg" variant="outline" className="h-14 min-w-[200px] border-white/20 bg-white/5 text-lg font-semibold text-white backdrop-blur-sm hover:bg-white/10 hover:text-white transition-all duration-300">
+                    </GlassButton>
+                    <GlassButton size="lg" variant="outline" className="h-14 min-w-[200px] text-lg font-semibold">
                         Watch Demo <Play className="ml-2 h-5 w-5 fill-current" />
-                    </Button>
+                    </GlassButton>
                 </div>
             </div>
         </section>

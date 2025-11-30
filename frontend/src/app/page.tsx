@@ -62,7 +62,7 @@ export default function Home() {
       <AnimatedBackground />
       <Header />
 
-      <div className="relative z-10 pt-16">
+      <div className="relative z-10">
         <SearchHero />
         <TrustBanner />
 
