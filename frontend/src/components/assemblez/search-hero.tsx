@@ -2,7 +2,11 @@ import { Search, Cpu, Gamepad2, HardDrive, MemoryStick, Monitor, Box } from "luc
 import { Button } from "@/components/ui/button";
 import DarkVeil from "./dark-veil";
 
-export default function SearchHero() {
+interface SearchHeroProps {
+    showTitle?: boolean;
+}
+
+export default function SearchHero({ showTitle = false }: SearchHeroProps) {
     const categories = [
         { name: "CPU", icon: Cpu },
         { name: "GPU", icon: Gamepad2 },
@@ -16,7 +20,7 @@ export default function SearchHero() {
         <section className="relative flex flex-col items-center justify-center gap-8 px-4 pt-36 pb-20 text-center md:pt-44 md:pb-28 overflow-hidden">
             {/* DarkVeil Background with Midnight Blue Theme */}
             <div className="absolute inset-0 z-0">
-                <DarkVeil 
+                <DarkVeil
                     hueShift={24}
                     noiseIntensity={0.01}
                     scanlineIntensity={0}
@@ -29,9 +33,13 @@ export default function SearchHero() {
             {/* Background Gradient Overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/40 to-black/80 z-[1]" />
 
+            {/* Title Section - Hidden initially for animation */}
             <div className="relative z-10 flex flex-col gap-4 max-w-4xl mx-auto">
-                <h1 className="text-4xl font-black leading-tight tracking-tight text-white md:text-6xl animate-slide-up">
-                    Assemble<span className="text-primary">Z</span>
+                <h1
+                    id="hero-title"
+                    className={`text-4xl font-black leading-tight tracking-tight text-white md:text-6xl transition-opacity duration-500 ${showTitle ? 'opacity-100' : 'opacity-0'}`}
+                >
+                    AssembleZ
                 </h1>
                 <h2 className="text-base font-normal text-gray-400 md:text-xl animate-slide-up" style={{ animationDelay: "0.1s" }}>
                     Build Smarter. Compare PC part prices across Sri Lanka.

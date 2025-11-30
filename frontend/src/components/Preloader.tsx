@@ -32,15 +32,33 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     useEffect(() => {
         if (pageLoaded && animationComplete) {
             const ctx = gsap.context(() => {
-                gsap.to(containerRef.current, {
-                    scale: 1.5,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power2.inOut",
+                const tl = gsap.timeline({
                     onComplete: onComplete
                 });
+
+                // 1. Fade out the black background immediately to reveal homepage
+                tl.to(containerRef.current, {
+                    backgroundColor: "transparent",
+                    duration: 0.5,
+                    ease: "power2.inOut"
+                })
+                    // 2. Simultaneously animate the text to the header position
+                    .to(containerRef.current!.querySelector('.relative'), {
+                        scale: 0.32, // Approximate scale to match text-6xl
+                        y: "-27vh", // Move up to header position
+                        duration: 0.8,
+                        ease: "power3.inOut"
+                    }, "<")
+                    // 3. Fade in the real title and fade out the preloader text
+                    .to("#hero-title", {
+                        opacity: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    }, "-=0.1");
+
             }, containerRef);
-            return () => ctx.revert();
+            // Do not revert context here to keep the #hero-title opacity change
+            // return () => ctx.revert();
         }
     }, [pageLoaded, animationComplete, onComplete]);
 
