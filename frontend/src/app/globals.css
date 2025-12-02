@@ -199,6 +199,7 @@
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-50%);
     }
@@ -213,18 +214,24 @@
   }
 
   @keyframes waveShift {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateX(0) translateY(0);
     }
+
     50% {
       transform: translateX(-100px) translateY(-5px);
     }
   }
 
   @keyframes wavePulse {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 0.6;
     }
+
     50% {
       opacity: 0.9;
     }
@@ -235,6 +242,7 @@
       opacity: 0;
       transform: translateY(40px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -246,6 +254,7 @@
       opacity: 0;
       transform: scale(0.9);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -257,6 +266,7 @@
       opacity: 0;
       transform: translateX(-60px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -268,6 +278,7 @@
       opacity: 0;
       transform: translateX(60px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -295,4 +306,16 @@
     opacity: 0;
   }
 
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

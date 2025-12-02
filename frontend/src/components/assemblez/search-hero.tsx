@@ -70,7 +70,7 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
         });
 
         const tl = gsap.timeline({ delay: 0.3 });
-        
+
         tl.to(zFillGroupRef.current, {
             y: 0,
             duration: 1.5,
@@ -78,33 +78,33 @@ export default function SearchHero({ showTitle = false }: SearchHeroProps) {
         });
 
         const heroTl = gsap.timeline({ delay: 0.05 });
-        
+
         heroTl.to(".hero-gradient-overlay", {
             opacity: 1,
             duration: 0.4,
             ease: "power2.inOut",
         })
-        .to(".hero-subtitle", {
-            opacity: 1,
-            y: 0,
-            duration: 0.25,
-            ease: "power2.out",
-        }, "-=0.3")
-        .to(".hero-search", {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.out",
-        }, "-=0.1")
-        .to(".hero-category-btn", {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.25,
-            stagger: 0.02,
-            ease: "power2.out",
-        }, "-=0.15");
+            .to(".hero-subtitle", {
+                opacity: 1,
+                y: 0,
+                duration: 0.25,
+                ease: "power2.out",
+            }, "-=0.3")
+            .to(".hero-search", {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out",
+            }, "-=0.1")
+            .to(".hero-category-btn", {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.25,
+                stagger: 0.02,
+                ease: "power2.out",
+            }, "-=0.15");
 
     }, { dependencies: [showTitle], scope: heroRef });
 
