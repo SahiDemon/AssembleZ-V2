@@ -106,7 +106,8 @@ export default function DarkVeil({
     if (!show) return;
     gsap.to(containerRef.current, {
       opacity: 1,
-      duration: 0.8,
+      duration: 1.2,
+      delay: 0.1,
       ease: "power2.inOut",
     });
   }, { dependencies: [show], scope: containerRef });
