@@ -155,7 +155,7 @@ export function SignupForm() {
                                 )}
                             </div>
                             {error && <p className="text-sm text-red-500 text-center">{error}</p>}
-                            <Button className="w-full h-12 text-base font-semibold bg-card-accent hover:bg-card-accent/90 text-white shadow-[0_0_20px_rgba(133,155,255,0.3)] active:scale-95 transition-all duration-300" type="submit" disabled={isLoading}>
+                            <Button className="w-full h-12 text-base font-semibold bg-[#3b82f6]/10 hover:bg-[#3b82f6]/30 text-white border border-[#3b82f6]/30 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.2)] active:scale-95 transition-all duration-300" type="submit" disabled={isLoading}>
                                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                 Verify Email
                             </Button>
